@@ -1,7 +1,7 @@
 name: splitview_pxq
 description: flutter split view
 version: 1.0.0
-homepage:
+homepage: https://github.com/oursrabbit/splitview_pxq
 
 environment:
   sdk: '>=3.0.6 <4.0.0'
