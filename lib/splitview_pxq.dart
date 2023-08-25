@@ -13,7 +13,7 @@ class SplitViewPXQ extends StatefulWidget {
   final bool spliterOverlapSplitView;
   final Widget spliter;
 
-  SplitViewPXQ({
+  const SplitViewPXQ({
     Key? key,
     required this.direction,
     required this.size,
@@ -36,7 +36,7 @@ class _SplitViewPXQState extends State<SplitViewPXQ> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _children = [];
+    List<Widget> children = [];
 
     double offset = 0;
     var width = MediaQuery.of(context).size.width;
@@ -52,7 +52,7 @@ class _SplitViewPXQState extends State<SplitViewPXQ> {
 
       if (widget.direction == SplitViewDirection.horizontal) {
         if(i == widget.children.length - 1){
-          _children.add(Positioned(
+          children.add(Positioned(
             //key: UniqueKey(),
               top: 0,
               left: offset,
@@ -61,7 +61,7 @@ class _SplitViewPXQState extends State<SplitViewPXQ> {
               child: element));
           widget.size[i] = width - offset;
         } else {
-          _children.add(Positioned(
+          children.add(Positioned(
             //key: UniqueKey(),
               top: 0,
               left: offset,
@@ -72,7 +72,7 @@ class _SplitViewPXQState extends State<SplitViewPXQ> {
         offset += widget.size[i] + (widget.spliterOverlapSplitView ? 0 : widget.spliterSize);
       } else if(widget.direction == SplitViewDirection.vertical){
         if(i == widget.children.length - 1){
-          _children.add(Positioned(
+          children.add(Positioned(
             //key: UniqueKey(),
               top: offset,
               left: 0,
@@ -81,7 +81,7 @@ class _SplitViewPXQState extends State<SplitViewPXQ> {
               child: element));
           widget.size[i] = height - offset;
         } else {
-          _children.add(Positioned(
+          children.add(Positioned(
             //key: UniqueKey(),
               top: offset,
               left: 0,
@@ -95,10 +95,9 @@ class _SplitViewPXQState extends State<SplitViewPXQ> {
 
     offset = 0;
     for (var i = 0; i < widget.children.length - 1; i++) {
-      var element = widget.children[i];
       offset += widget.size[i];
       if (widget.direction == SplitViewDirection.horizontal) {
-        _children.add(Positioned(
+        children.add(Positioned(
             //key: UniqueKey(),
             top: 0,
             left: offset,
@@ -118,7 +117,7 @@ class _SplitViewPXQState extends State<SplitViewPXQ> {
               child: widget.spliter,
             )));
       } else {
-        _children.add(Positioned(
+        children.add(Positioned(
             //key: UniqueKey(),
             top: offset,
             left: 0,
@@ -142,7 +141,7 @@ class _SplitViewPXQState extends State<SplitViewPXQ> {
     }
 
     var stack = Stack(
-      children: _children,
+      children: children,
     );
 
     return stack;
